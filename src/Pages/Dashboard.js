@@ -7,6 +7,7 @@ import app from "../firebase";
 import { getDatabase, ref, set, update, get } from "firebase/database";
 import Logs from "../Components/Logs";
 import Navbar from "../Components/Navbar";
+import {useNavigate} from 'react-router-dom';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const Dashboard = () => {
@@ -14,7 +15,7 @@ const Dashboard = () => {
   const [expenseOpen, setExpenseOpen] = React.useState(false);
   const [logs, setLogs] = React.useState();
   const [logLoading, setLogLoading] = React.useState(true);
-
+  const navigate = useNavigate();
   const db = getDatabase(app);
     const amountRef = ref(db, "TB");
   useEffect(() => {
@@ -44,9 +45,8 @@ if(logLoading){
   return (
     <ThemeProvider theme={theme}>
      <div style={{marginTop:"90px"}}>
-      <Navbar/>
       <div className="TB mainBox" style={{zIndex: "1"}}>
-      <CardComponent>
+      <CardComponent onClick={()=>{navigate('/analytics')}}>
         <Typography variant="h4" style={{color:"white"}}>
           Total Balance
         </Typography>

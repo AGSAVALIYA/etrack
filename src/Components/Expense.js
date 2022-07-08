@@ -59,6 +59,7 @@ const Expense = ({setTB, TB, setExpenseOpen, setLogLoading}) => {
             amount: parseInt(amount),
             category: category,
             description: description,
+            date: Date.now(),
             key: newLog.key
         });
         setDescription('');
