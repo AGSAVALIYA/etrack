@@ -1,14 +1,20 @@
 import  {useEffect, useState} from "react";
 import * as React from 'react';
-import { Button, Card, TextField, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { Button, Card, TextField, ToggleButtonGroup } from "@mui/material";
+import MuiToggleButton from "@mui/material/ToggleButton";
+import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import app from "../firebase";
-import { getDatabase, ref, set, update, get } from "firebase/database";
+import { getDatabase, ref, set, update, get, push } from "firebase/database";
 
 
 const Expense = ({setTB, TB}) => {
     const [amount, setAmount] = useState('');
     const [category, setCategory] = React.useState('D');
+    const [description, setDescription] = React.useState('');
+
+  
+
     const handelAmount = (e) => {
         setAmount(e.target.value);
     }
@@ -21,19 +27,42 @@ const Expense = ({setTB, TB}) => {
         )
     }, []);
 
-    
-//add expense to TB in firebase
+    const ToggleButton = styled(MuiToggleButton)({
+        color: '#fff',
+        borderColor: '#fff',
+        "&.Mui-selected, &.Mui-selected:hover": {
+          color: "black",
+          fontWeight: "bold",
+          backgroundColor: '#fff'
+        }
+      });  
+    const expenseLog = ref(db, "log");
+    const newLog = push(expenseLog);
     const addExpense = (e) => {
         e.preventDefault();
         update(ref(db), {
             TB: TB + parseInt(amount),
           });
+        setTB(TB + parseInt(amount));
+        set(newLog, {
+            amount: parseInt(amount),
+            category: category,
+            description: description,
+            timestamp: Date.now()
+        });
+
+        setAmount('');     
+    }
+ const handleCategory = (e, newValue) => {
+    setCategory(newValue);
+    }
+    const handleDescription = (e) => {
+        setDescription(e.target.value);
+        console.log(description);
     }
 
+
     
-      const handleCategory = (event, newCategory) => {
-        setCategory(newCategory);
-      };
     return (
         <div>
             <Card
@@ -50,7 +79,7 @@ const Expense = ({setTB, TB}) => {
             }}
             >
             <TextField label="Amount" inputProps={{style:{color:"white"}}} value={amount} onChange={handelAmount} type="number"/>
-            <TextField label="Description" inputProps={{style:{color:"white"}}}/>
+            <TextField label="Description" onChange={handleDescription} inputProps={{style:{color:"white"}}}/>
             <ToggleButtonGroup exclusive value={category} onChange={handleCategory}>
                 <ToggleButton value="D">D</ToggleButton>
                 <ToggleButton value="C">C</ToggleButton>

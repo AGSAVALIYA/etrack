@@ -14,14 +14,11 @@ const Dashboard = () => {
   useEffect(() => {
     get(amountRef).then(res => {
         setTB(res.val());
-        console.log(res.val());
     }
     )
 }, []);
-
   return (
     <ThemeProvider theme={theme}>
-
      <div style={{marginTop:"90px"}}>
       <CardComponent>
         <Typography variant="h4" style={{color:"white"}}>
