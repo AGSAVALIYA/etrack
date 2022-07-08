@@ -44,6 +44,7 @@ if(logLoading){
 
   return (
     <ThemeProvider theme={theme}>
+      <Navbar/>
      <div style={{marginTop:"90px"}}>
       <div className="TB mainBox" style={{zIndex: "1"}}>
       <CardComponent onClick={()=>{navigate('/analytics')}}>

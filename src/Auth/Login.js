@@ -10,9 +10,9 @@ import { useNavigate, Navigate } from 'react-router-dom';
  
 //login form
 const Login = () => {
-    const [username, setUsername] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const navigate = useNavigate();  
+ const [username, setUsername] = React.useState('');
+const [password, setPassword] = React.useState('');
+const navigate = useNavigate();  
  const auth = getAuth();
 const onChangeUsername = (e) => {
         setUsername(e.target.value);
