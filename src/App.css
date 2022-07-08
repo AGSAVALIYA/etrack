@@ -6,7 +6,30 @@ body{
   border-color: #ffffff !important;
 }
 
-/*for change label color in focus state*/
 .MuiFormLabel-root{
   color: #ffffff !important;
+}
+
+.TB{
+  position: sticky;
+  top: 100px;
+}
+
+.mainBox{
+  background-color: #66666648;
+  backdrop-filter: blur(7px);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+  background-color: rgba(255, 203, 203, 0) !important;
+}
+
+.expense{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }

@@ -5,7 +5,7 @@ import "./Navbar.css";
 const Navbar = () => {
     return (
         <div className="navbar">
-         My APP
+         Expense Tracker
         </div>
     );
     }

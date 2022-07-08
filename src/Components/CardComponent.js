@@ -6,6 +6,7 @@ const CardComponent = (props) => {
         <div>
             <Card
                 variant='outlined'
+                {...props}
                 sx={{
                     color: '#fff',
                     width: '75%',
