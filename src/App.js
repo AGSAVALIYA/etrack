@@ -1,23 +1,23 @@
 import './App.css';
 import Navbar from './Components/Navbar';
 import Dashboard from './Pages/Dashboard';
-import {Routes, Route} from 'react-router-dom';
-import ProtectedRoutes from './Auth/ProtectedRoutes';
+import {Routes, Route, useNavigate, Navigate} from 'react-router-dom';
 import Login from './Auth/Login';
 import Register from './Auth/Register';
+import { useEffect, useState } from 'react';
+import PrivateRoute from './Auth/PrivateRoute';
 
 function App() {
-  const user = localStorage.getItem("user");
+  
   return (
     <div className="App">
-      {user ? 
-      <ProtectedRoutes/>
-        : <Routes>
-          <Route path="/login" element={<Login/>} />
-          <Route path="/" element={<Register/>} />
-          </Routes>
-      }
-      
+      <Routes>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/register" element={<Register/>}/>
+      <Route path="/" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
+    </Routes>
+
+
 
     </div>
   );

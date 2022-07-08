@@ -4,18 +4,12 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { app } from '../firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 
  
 //login form
 const Login = () => {
-    const user = localStorage.getItem("user");
-    useEffect(() => {
-        if(user){
-            navigate("/");
-        }
-    }, []);
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const navigate = useNavigate();  
@@ -43,6 +37,12 @@ const onSubmit = (e) => {
     )
 }
 
+useEffect(() => {
+    if(localStorage.getItem("user")){
+        navigate("/");
+    }
+}
+, []);
 
 
 
