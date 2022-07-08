@@ -24,9 +24,6 @@ body{
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.css-1t1j96h-MuiPaper-root-MuiDialog-paper{
-  background-color: rgba(255, 203, 203, 0) !important;
-}
 
 .expense{
   position: fixed;

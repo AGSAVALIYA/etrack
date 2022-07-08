@@ -66,7 +66,7 @@ if(logLoading){
       <div className="expense">
         <IconButton color="primary" onClick={()=>setExpenseOpen(true)}><AddCircleIcon style={{fontSize: "50px"}}/></IconButton>
       </div>
-      <Dialog open={expenseOpen} onClose={() => setExpenseOpen(false)}>
+      <Dialog open={expenseOpen} onClose={() => setExpenseOpen(false)} PaperProps={{style:{backgroundColor: "transparent", boxShadow: "none"}}}>
         <Expense setExpenseOpen={setExpenseOpen} TB={TB} setTB={setTB} setLogLoading={setLogLoading}/>
       </Dialog>
      </div>
