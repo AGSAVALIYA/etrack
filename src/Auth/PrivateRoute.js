@@ -16,6 +16,7 @@ const PrivateRoute = ({ children }) => {
         return children;
       }
       else{
+        localStorage.removeItem("user");
         navigate("/login");
       }
     }
