@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { app } from '../firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Navigate } from 'react-router-dom';
-
+import ParticlesBg from 'particles-bg'
 
  
 //login form
@@ -36,32 +36,44 @@ const onSubmit = (e) => {
     }
     )
 }
+const user = JSON.parse(localStorage.getItem("user"));
 
 useEffect(() => {
-    if(localStorage.getItem("user")){
-        navigate("/");
+    if(user){
+        const email = user.user.email;
+        if(email === "akshitgs0504@gmail.com"){
+            navigate("/");
+        }
     }
 }
 , []);
+const config = {
+    rps: 100,
+}
+
 
 
 
     return (
-        <div style={{
-            margin: "auto",
-            marginTop: "300px",
-        }}>
+        <div>
+           <ParticlesBg type="polygon" bg={true} config={config}/>
            <Card variant='outlined'
+           className='login-card'
                 sx={{
                     color: '#fff',
                     width: '300px',
                     padding: "30px",
                     margin: "auto",
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
                     marginTop: "15px",
                     backgroundColor: "#161b22",
                     borderColor: "#30363d",
                     borderRadius: "10px",
                 }}>
+
                     <TextField variant='outlined'
                         label='Username'
                         value={username}

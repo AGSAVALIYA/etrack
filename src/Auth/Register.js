@@ -12,11 +12,14 @@ const Register = () => {
     const [password, setPassword] = React.useState('');
     const auth = getAuth();
     const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
+    const email = user.user.email;
     useEffect(() => {
-        if(localStorage.getItem("user")){
-            navigate("/");
+        if(email === "akshitgs0504@gmail.com"){
+        navigate("/");
         }
-    }, []);
+    }
+    , []);
 
 
 const onChangeUsername = (e) => {
