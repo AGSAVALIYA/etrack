@@ -73,15 +73,16 @@ const config = {
                     borderColor: "#30363d",
                     borderRadius: "10px",
                 }}>
-
+                    <form onSubmit={onSubmit}>
                     <TextField variant='outlined'
                         label='Username'
                         value={username}
+                        autoComplete='off'
                         onChange={onChangeUsername}
+                        className="login-input"
                         sx={{
                             width: '100%',
                             marginBottom: "10px",
-                            backgroundColor: "#0d1117",
                             borderColor: "#30363d",
                             borderRadius: "10px",
                             color: "#fff",
@@ -101,11 +102,13 @@ const config = {
                     <TextField variant='outlined'
                         label='Password'
                         value={password}
+                        autoComplete='off'
+                        type={'password'}
                         onChange={onChangePassword}
+                        className="login-input"
                         sx={{
                             width: '100%',
                             marginBottom: "10px",
-                            backgroundColor: "#0d1117",
                             color: "#fff",
                             borderColor: "#30363d",
                             borderRadius: "10px",
@@ -128,7 +131,8 @@ const config = {
                         borderRadius: "10px",
                         padding: "10px",
                         fontSize: "15px"
-                    }} onClick={onSubmit}>Login</button>
+                    }} >Login</button>
+                   </form> 
            </Card>
         </div>
     )
