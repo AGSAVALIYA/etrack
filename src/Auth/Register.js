@@ -10,17 +10,27 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [message , setMessage] = React.useState('');
+    const [admin, setAdmin] = React.useState(false);
     const auth = getAuth();
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("user"));
     const email = user.user.email;
     useEffect(() => {
-        if(email === "akshitgs0504@gmail.com"){
-        navigate("/");
+        if(email !== "akshitgs0504@gmail.com"){
+        setMessage("You are not authorized to register :/");
+        setTimeout(() => {
+            navigate("/");
+        } , 3000);
+        }else{
+            setAdmin(true);
         }
-    }
-    , []);
+    } , [email, message, navigate]);
 
+
+
+//navigate to dashboard after 5 sec
+    
 
 const onChangeUsername = (e) => {
         setUsername(e.target.value);
@@ -51,7 +61,7 @@ const onSubmit = (e) => {
             margin: "auto",
             marginTop: "300px",
         }}>
-           <Card variant='outlined'
+           {(admin==true) ? (<Card variant='outlined'
                 sx={{
                     color: '#fff',
                     width: '300px',
@@ -117,7 +127,8 @@ const onSubmit = (e) => {
                         padding: "10px",
                         fontSize: "15px"
                     }} onClick={onSubmit}>Register</button>
-           </Card>
+           </Card> ): <h1 style={{color: "white", textAlign: "center"}}>{message}</h1>
+           }
         </div>
     )
 }

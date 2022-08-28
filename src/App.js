@@ -9,14 +9,16 @@ import PrivateRoute from './Auth/PrivateRoute';
 import Analytics from './Pages/Analytics';
 
 function App() {
+
   
   return (
     <div className="App">
       <Routes>
-      <Route path="/login" element={<Login/>}/>
+      <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register/>}/>
-      <Route path="/" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
+      <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
       <Route path="/analytics" element={<PrivateRoute><Analytics/></PrivateRoute>}/>
+
     </Routes>
     </div>
   );

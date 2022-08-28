@@ -5,7 +5,9 @@ import { useEffect } from 'react';
 import { app } from '../firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Navigate } from 'react-router-dom';
-import ParticlesBg from 'particles-bg'
+import ParticlesBg from 'particles-bg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
  
 //login form
@@ -26,12 +28,13 @@ const onSubmit = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, username, password)
     .then(res => {
-        console.log(res);
+        toast.success("Logged in successfully");
         localStorage.setItem('user', JSON.stringify(res));
         navigate('/');
     }
     )
     .catch(err => {
+        toast.error("Invalid Credentials");
         console.log(err);
     }
     )
@@ -40,10 +43,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 useEffect(() => {
     if(user){
-        const email = user.user.email;
-        if(email === "akshitgs0504@gmail.com"){
             navigate("/");
-        }
     }
 }
 , []);
@@ -134,6 +134,7 @@ const config = {
                     }} >Login</button>
                    </form> 
            </Card>
+           <ToastContainer />
         </div>
     )
 }

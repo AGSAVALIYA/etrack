@@ -9,6 +9,8 @@ import Logs from "../Components/Logs";
 import Navbar from "../Components/Navbar";
 import {useNavigate} from 'react-router-dom';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Dashboard = () => {
   const [TB, setTB] = React.useState([]);
@@ -22,6 +24,7 @@ const Dashboard = () => {
     get(amountRef).then(res => {
         setTB(res.val());
     }
+    
     )
     get(ref(db, "log")).then(res => {
         const logsArray = Object.values(res.val());
